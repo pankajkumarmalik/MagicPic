@@ -21,8 +21,8 @@ const Sidebar = () => {
             height={28}
           /> */}
           <h1
-            className="text-4xl font-bold"
-            style={{ color: "#683ce6", fontFamily: "mono" }}
+            className="text-4xl font-extrabold font-sans "
+            style={{ color: "#683ce6" }}
           >
             MagicPic💫
           </h1>
