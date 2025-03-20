@@ -59,6 +59,7 @@ export async function POST(req: Request) {
 
   // CREATE
   if (eventType === "user.created") {
+    console.log("Logging evt.data: ", evt.data);
     const { id, email_addresses, image_url, first_name, last_name, username } =
       evt.data;
 
@@ -70,12 +71,13 @@ export async function POST(req: Request) {
       lastName: last_name ?? "",
       photo: image_url,
     };
-
+    console.log("Call to create new user");
     const newUser = await createUser(user);
+    console.log("New user created");
 
     // Set public metadata
+    const client = await clerkClient();
     if (newUser) {
-      const client = await clerkClient();
       client.users.updateUser(id, {
         publicMetadata: {
           userId: newUser._id,

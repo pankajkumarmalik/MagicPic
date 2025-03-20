@@ -9,9 +9,12 @@ import { handleError } from "../utils";
 // CREATE
 export async function createUser(user: CreateUserParams) {
   try {
+    console.log(" Before Database connected");
     await connectToDatabase();
+    console.log(" After Database connected");
 
     const newUser = await User.create(user);
+    console.log("User created in MongoDB");
 
     return JSON.parse(JSON.stringify(newUser));
   } catch (error) {
